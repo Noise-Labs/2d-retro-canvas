@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Converter</title>
+    <style>
+        div {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h3>Origin Canvas</h3>
+    <canvas id="origin" width="200" height="200"></canvas>
+</div>
+<div>
+    <h3>Box = 2px</h3>
+    <canvas id="c2" width="200" height="200"></canvas>
+</div>
+<div>
+    <h3>Box = 4px</h3>
+    <canvas id="c3" width="200" height="200"></canvas>
+</div>
+<div>
+    <h3>Box = 10px</h3>
+    <canvas id="c4" width="200" height="200"></canvas>
+</div>
+<script type="module">
+    import { Convert } from  "../index.js";
+
+    function initTestCanvas(id,boxSize) {
+        var canvas = document.querySelector("#" + id)
+        var ctx = canvas.getContext("2d")
+        var image = new Image();
+        image.src = "./demo.jpg";
+        image.onload = function() {
+            ctx.drawImage(image,0,0,canvas.width,canvas.height)
+            console.log("loaded")
+            Convert(id,boxSize)
+        }
+    }
+
+    initTestCanvas("origin",1)
+    initTestCanvas("c2",2)
+    initTestCanvas("c3",4)
+    initTestCanvas("c4",10)
+</script>
+</body>
+</html>
