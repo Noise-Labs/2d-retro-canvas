@@ -1,4 +1,4 @@
-export function Convert(canvasID,boxSize) {
+export default function Convert(canvasID,boxSize) {
     var canvas = document.querySelector("#" + canvasID)
     var ctx = canvas.getContext("2d")
     ctx.imageSmoothingEnabled = false;
